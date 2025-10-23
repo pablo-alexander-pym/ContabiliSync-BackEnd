@@ -1,0 +1,123 @@
+# Archivos y carpetas específicos de .NET
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
+
+# Carpetas de compilación
+bin/
+obj/
+out/
+
+# Carpetas y archivos de Visual Studio
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.suo
+*.cache
+*.csproj.user
+
+# Carpetas y archivos de IDE
+_ReSharper*/
+*.resharper
+*.DotSettings.user
+.idea/
+
+# Archivos de configuración local
+appsettings.Development.json
+*.Development.json
+*.Local.json
+
+# Carpeta de paquetes NuGet
+packages/
+
+# Archivos de logs
+*.log
+logs/
+Log/
+
+# Archivos temporales
+[Tt]emp/
+[Tt]mp/
+
+# Archivos de base de datos local
+*.db
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+
+# Carpeta de archivos subidos
+Uploads/
+uploads/
+
+# Archivos de certificados y secretos
+*.pfx
+*.key
+*.pem
+*.cert
+*.crt
+
+# Archivos de caché y estado
+.dotnet/
+.nuget/
+.npm/
+.yarn/
+*.lock.json
+
+# Archivos de cobertura de pruebas
+coverage/
+TestResults/
+[Cc]overage[Rr]esult*/
+*.coverage
+*.coveragexml
+
+# Archivos de publicación
+publish/
+**/PublishProfiles/
+*.pubxml
+*.publishsettings
+
+# Archivos de respaldo
+*.[Bb]ak
+*.bak
+*.[Bb]ackup
+
+# Archivos específicos del entorno
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Archivos de dependencias
+node_modules/
+jspm_packages/
+bower_components/
+
+# Carpetas de herramientas
+tools/
+_tools/
+
+# Archivos de análisis estático
+.sonarqube/
+.scannerwork/
+
+# Archivos de documentación generados
+docs/_build/
+_site/
+
+# Archivos de migración de Entity Framework
+Migrations/*.cs
+!Migrations/*_Initial.cs
+!Migrations/*_Initial.Designer.cs
+
+# Archivos específicos del sistema operativo
+Thumbs.db
+desktop.ini
+.directory
