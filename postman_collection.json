@@ -1,0 +1,179 @@
+{
+  "info": {
+    "name": "ContabiliSync BackEnd API",
+    "_postman_id": "contabilysync-backend-collection",
+    "description": "Colección para probar la API: Usuarios, Citas, Documentos.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "GET /api/Usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/Usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","Usuarios"]
+            }
+          }
+        },
+        {
+          "name": "GET /api/Usuarios/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/Usuarios/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","Usuarios","1"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/Usuarios",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan Perez\",\n  \"email\": \"juan.perez@example.com\",\n  \"password\": \"secret123\",\n  \"tipo\": 1,\n  \"telefono\": \"+59112345678\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/Usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","Usuarios"]
+            }
+          }
+        },
+        {
+          "name": "PUT /api/Usuarios/:id",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"nombre\": \"Juan Actualizado\",\n  \"email\": \"juan.act@example.com\",\n  \"password\": \"newpass\",\n  \"tipo\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/Usuarios/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","Usuarios","1"]
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/Usuarios/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/Usuarios/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","Usuarios","1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Citas",
+      "item": [
+        {
+          "name": "GET /api/Citas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/Citas", "host": ["{{baseUrl}}"], "path": ["api","Citas"] }
+          }
+        },
+        {
+          "name": "GET /api/Citas/:id",
+          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Citas/1", "host": ["{{baseUrl}}"], "path": ["api","Citas","1"] } }
+        },
+        {
+          "name": "GET /api/Citas/Contador/:contadorId",
+          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Citas/Contador/2", "host": ["{{baseUrl}}"], "path": ["api","Citas","Contador","2"] } }
+        },
+        {
+          "name": "GET /api/Citas/Contribuyente/:contribuyenteId",
+          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Citas/Contribuyente/3", "host": ["{{baseUrl}}"], "path": ["api","Citas","Contribuyente","3"] } }
+        },
+        {
+          "name": "POST /api/Citas",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contadorId\": 2,\n  \"contribuyenteId\": 3,\n  \"fecha\": \"2025-10-24T00:00:00Z\",\n  \"hora\": \"09:30:00\",\n  \"estado\": 0,\n  \"notas\": \"Primera reunión\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/Citas", "host": ["{{baseUrl}}"], "path": ["api","Citas"] }
+          }
+        },
+        {
+          "name": "PUT /api/Citas/:id",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"contadorId\": 2,\n  \"contribuyenteId\": 3,\n  \"fecha\": \"2025-10-25T00:00:00Z\",\n  \"hora\": \"10:00:00\",\n  \"estado\": 1,\n  \"notas\": \"Reagendada\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/Citas/1", "host": ["{{baseUrl}}"], "path": ["api","Citas","1"] }
+          }
+        },
+        {
+          "name": "DELETE /api/Citas/:id",
+          "request": { "method": "DELETE", "header": [], "url": { "raw": "{{baseUrl}}/api/Citas/1", "host": ["{{baseUrl}}"], "path": ["api","Citas","1"] } }
+        }
+      ]
+    },
+    {
+      "name": "Documentos",
+      "item": [
+        {
+          "name": "GET /api/Documentos",
+          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Documentos", "host": ["{{baseUrl}}"], "path": ["api","Documentos"] } }
+        },
+        {
+          "name": "GET /api/Documentos/:id",
+          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Documentos/1", "host": ["{{baseUrl}}"], "path": ["api","Documentos","1"] } }
+        },
+        {
+          "name": "GET /api/Documentos/Contribuyente/:contribuyenteId",
+          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Documentos/Contribuyente/3", "host": ["{{baseUrl}}"], "path": ["api","Documentos","Contribuyente","3"] } }
+        },
+        {
+          "name": "POST /api/Documentos (upload file)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": "" },
+                { "key": "contribuyenteId", "type": "text", "value": "3" },
+                { "key": "descripcion", "type": "text", "value": "Factura octubre" },
+                { "key": "tipo", "type": "text", "value": "2" }
+              ]
+            },
+            "url": { "raw": "{{baseUrl}}/api/Documentos", "host": ["{{baseUrl}}"], "path": ["api","Documentos"] }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/Documentos/Download/:id",
+          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Documentos/Download/1", "host": ["{{baseUrl}}"], "path": ["api","Documentos","Download","1"] } }
+        },
+        {
+          "name": "DELETE /api/Documentos/:id",
+          "request": { "method": "DELETE", "header": [], "url": { "raw": "{{baseUrl}}/api/Documentos/1", "host": ["{{baseUrl}}"], "path": ["api","Documentos","1"] } }
+        }
+      ]
+    }
+  ]
+}
