@@ -31,3 +31,4 @@ U:\4to Semestre\Ingenieria de Software\Proyector\BackEnd\BackEnd\obj\Debug\net9.
 U:\4to Semestre\Ingenieria de Software\Proyector\BackEnd\BackEnd\obj\Debug\net9.0\BackEnd.pdb
 U:\4to Semestre\Ingenieria de Software\Proyector\BackEnd\BackEnd\obj\Debug\net9.0\BackEnd.genruntimeconfig.cache
 U:\4to Semestre\Ingenieria de Software\Proyector\BackEnd\BackEnd\obj\Debug\net9.0\ref\BackEnd.dll
+U:\4to Semestre\Ingenieria de Software\Proyector\BackEnd\BackEnd\obj\Debug\net9.0\BackEnd.sourcelink.json
