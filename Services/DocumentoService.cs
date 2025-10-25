@@ -45,9 +45,9 @@ namespace BackEnd.Services
             if (file == null || file.Length == 0)
                 throw new ArgumentException("No se ha proporcionado ningún archivo");
 
-            var contribuyente = await _usuarioService.GetUsuarioByIdAsync(documento.ContribuyenteId);
-            if (contribuyente == null || contribuyente.Tipo != TipoUsuario.Contribuyente)
-                throw new ArgumentException("Contribuyente no válido");
+            var usuario = await _usuarioService.GetUsuarioByIdAsync(documento.ContribuyenteId);
+            if (usuario == null || usuario.Tipo != TipoUsuario.Usuario)
+                throw new ArgumentException("Usuario no válido");
 
             // Crear directorio para documentos si no existe
             var uploadsFolder = Path.Combine(_environment.ContentRootPath, "Uploads");
@@ -67,7 +67,7 @@ namespace BackEnd.Services
             documento.RutaArchivo = uniqueFileName;
             documento.FechaCarga = DateTime.UtcNow;
             documento.Nombre = file.FileName;
-            documento.Contribuyente = contribuyente;
+            documento.Contribuyente = usuario;
 
             _context.Documentos.Add(documento);
             await _context.SaveChangesAsync();

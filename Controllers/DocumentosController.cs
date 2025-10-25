@@ -66,7 +66,7 @@ namespace BackEnd.Controllers
                         Nombre = "Temporal",
                         Email = "temporal@temp.com",
                         Password = "temp",
-                        Tipo = TipoUsuario.Contribuyente
+                        Tipo = TipoUsuario.Usuario
                     }  // El servicio actualizará con los datos reales
                 };
 
