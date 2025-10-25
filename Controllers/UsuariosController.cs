@@ -50,6 +50,16 @@ namespace BackEnd.Controllers
         }
 
         /// <summary>
+        /// Obtiene la lista de usuarios por tipo (Usuario, Contador, Administrador)
+        /// </summary>
+        [HttpGet("PorTipo/{tipo}")]
+        public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuariosPorTipo(TipoUsuario tipo)
+        {
+            var usuarios = await _usuarioService.GetUsuariosByTipoAsync(tipo);
+            return Ok(usuarios);
+        }
+
+        /// <summary>
         /// Crea un nuevo usuario en el sistema
         /// </summary>
         [HttpPost]

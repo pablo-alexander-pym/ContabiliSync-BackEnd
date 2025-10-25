@@ -21,7 +21,7 @@ namespace BackEnd.Models
         public TipoUsuario Tipo { get; set; }
 
         public string? Telefono { get; set; }
-        
+
         // Solo para contadores
         public string? Especialidad { get; set; }
         public string? NumeroLicencia { get; set; }
@@ -29,7 +29,8 @@ namespace BackEnd.Models
 
     public enum TipoUsuario
     {
+        Usuario,
         Contador,
-        Contribuyente
+        Administrador
     }
 }

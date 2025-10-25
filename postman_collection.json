@@ -34,13 +34,58 @@
           }
         },
         {
-          "name": "POST /api/Usuarios",
+          "name": "GET /api/Usuarios/PorTipo/{tipo}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/Usuarios/PorTipo/0",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","Usuarios","PorTipo","0"],
+              "description": "Tipo: 0 = Usuario, 1 = Contador, 2 = Administrador"
+            }
+          }
+        },
+        {
+          "name": "POST /api/Usuarios (Usuario Regular)",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Juan Perez\",\n  \"email\": \"juan.perez@example.com\",\n  \"password\": \"secret123\",\n  \"tipo\": 1,\n  \"telefono\": \"+59112345678\"\n}"
+              "raw": "{\n  \"nombre\": \"Juan Perez\",\n  \"email\": \"juan.perez@example.com\",\n  \"password\": \"secret123\",\n  \"tipo\": 0,\n  \"telefono\": \"+59112345678\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/Usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","Usuarios"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/Usuarios (Contador)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ana Contadora\",\n  \"email\": \"ana.conta@example.com\",\n  \"password\": \"secret123\",\n  \"tipo\": 1,\n  \"telefono\": \"+59187654321\",\n  \"especialidad\": \"Impuestos Corporativos\",\n  \"numeroLicencia\": \"LC123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/Usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","Usuarios"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/Usuarios (Administrador)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Admin Sistema\",\n  \"email\": \"admin@contabilisync.com\",\n  \"password\": \"adminPass123\",\n  \"tipo\": 2,\n  \"telefono\": \"+59199999999\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/Usuarios",
@@ -56,7 +101,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": 1,\n  \"nombre\": \"Juan Actualizado\",\n  \"email\": \"juan.act@example.com\",\n  \"password\": \"newpass\",\n  \"tipo\": 1\n}"
+              "raw": "{\n  \"id\": 1,\n  \"nombre\": \"Juan Actualizado\",\n  \"email\": \"juan.act@example.com\",\n  \"password\": \"newpass\",\n  \"tipo\": 0,\n  \"telefono\": \"+59112345678\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/Usuarios/1",
@@ -99,8 +144,8 @@
           "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Citas/Contador/2", "host": ["{{baseUrl}}"], "path": ["api","Citas","Contador","2"] } }
         },
         {
-          "name": "GET /api/Citas/Contribuyente/:contribuyenteId",
-          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Citas/Contribuyente/3", "host": ["{{baseUrl}}"], "path": ["api","Citas","Contribuyente","3"] } }
+          "name": "GET /api/Citas/Usuario/:usuarioId",
+          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Citas/Usuario/3", "host": ["{{baseUrl}}"], "path": ["api","Citas","Usuario","3"] } }
         },
         {
           "name": "POST /api/Citas",
@@ -109,7 +154,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"contadorId\": 2,\n  \"contribuyenteId\": 3,\n  \"fecha\": \"2025-10-24T00:00:00Z\",\n  \"hora\": \"09:30:00\",\n  \"estado\": 0,\n  \"notas\": \"Primera reunión\"\n}"
+              "raw": "{\n  \"contadorId\": 2,\n  \"usuarioId\": 3,\n  \"fecha\": \"2025-10-24T00:00:00Z\",\n  \"hora\": \"09:30:00\",\n  \"estado\": 0,\n  \"notas\": \"Primera reunión\"\n}"
             },
             "url": { "raw": "{{baseUrl}}/api/Citas", "host": ["{{baseUrl}}"], "path": ["api","Citas"] }
           }
@@ -121,7 +166,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": 1,\n  \"contadorId\": 2,\n  \"contribuyenteId\": 3,\n  \"fecha\": \"2025-10-25T00:00:00Z\",\n  \"hora\": \"10:00:00\",\n  \"estado\": 1,\n  \"notas\": \"Reagendada\"\n}"
+              "raw": "{\n  \"id\": 1,\n  \"contadorId\": 2,\n  \"usuarioId\": 3,\n  \"fecha\": \"2025-10-25T00:00:00Z\",\n  \"hora\": \"10:00:00\",\n  \"estado\": 1,\n  \"notas\": \"Reagendada\"\n}"
             },
             "url": { "raw": "{{baseUrl}}/api/Citas/1", "host": ["{{baseUrl}}"], "path": ["api","Citas","1"] }
           }
@@ -144,8 +189,8 @@
           "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Documentos/1", "host": ["{{baseUrl}}"], "path": ["api","Documentos","1"] } }
         },
         {
-          "name": "GET /api/Documentos/Contribuyente/:contribuyenteId",
-          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Documentos/Contribuyente/3", "host": ["{{baseUrl}}"], "path": ["api","Documentos","Contribuyente","3"] } }
+          "name": "GET /api/Documentos/Usuario/:usuarioId",
+          "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/api/Documentos/Usuario/3", "host": ["{{baseUrl}}"], "path": ["api","Documentos","Usuario","3"] } }
         },
         {
           "name": "POST /api/Documentos (upload file)",
@@ -156,7 +201,7 @@
               "mode": "formdata",
               "formdata": [
                 { "key": "file", "type": "file", "src": "" },
-                { "key": "contribuyenteId", "type": "text", "value": "3" },
+                { "key": "usuarioId", "type": "text", "value": "3" },
                 { "key": "descripcion", "type": "text", "value": "Factura octubre" },
                 { "key": "tipo", "type": "text", "value": "2" }
               ]

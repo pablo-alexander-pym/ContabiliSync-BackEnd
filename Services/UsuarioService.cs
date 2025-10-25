@@ -52,8 +52,13 @@ namespace BackEnd.Services
 
         public async Task<IEnumerable<Usuario>> GetContadoresAsync()
         {
+            return await GetUsuariosByTipoAsync(TipoUsuario.Contador);
+        }
+
+        public async Task<IEnumerable<Usuario>> GetUsuariosByTipoAsync(TipoUsuario tipo)
+        {
             return await _context.Usuarios
-                .Where(u => u.Tipo == TipoUsuario.Contador)
+                .Where(u => u.Tipo == tipo)
                 .ToListAsync();
         }
 

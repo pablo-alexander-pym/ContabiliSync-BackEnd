@@ -10,6 +10,7 @@ namespace BackEnd.Services.Interfaces
         Task UpdateUsuarioAsync(int id, Usuario usuario);
         Task DeleteUsuarioAsync(int id);
         Task<IEnumerable<Usuario>> GetContadoresAsync();
+        Task<IEnumerable<Usuario>> GetUsuariosByTipoAsync(TipoUsuario tipo);
         Task<bool> ExisteUsuarioAsync(int id);
     }
 }
