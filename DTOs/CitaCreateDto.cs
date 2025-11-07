@@ -1,18 +1,15 @@
 using System.ComponentModel.DataAnnotations;
+using BackEnd.Models;
 
-namespace BackEnd.Models
+namespace BackEnd.DTOs
 {
-    public class Cita
+    public class CitaCreateDto
     {
-        public int Id { get; set; }
-
         [Required]
         public int ContadorId { get; set; }
-        public Usuario? Contador { get; set; }
 
         [Required]
         public int ContribuyenteId { get; set; }
-        public Usuario? Contribuyente { get; set; }
 
         [Required]
         public DateTime Fecha { get; set; }
@@ -24,13 +21,5 @@ namespace BackEnd.Models
         public EstadoCita Estado { get; set; }
 
         public string? Notas { get; set; }
-    }
-
-    public enum EstadoCita
-    {
-        Pendiente,
-        Confirmada,
-        Cancelada,
-        Completada
     }
 }

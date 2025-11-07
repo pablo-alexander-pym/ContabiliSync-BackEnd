@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BackEnd.Models;
 using BackEnd.Services.Interfaces;
+using BackEnd.DTOs;
 
 namespace BackEnd.Controllers
 {
@@ -63,10 +64,22 @@ namespace BackEnd.Controllers
         /// Crea una nueva cita en el sistema
         /// </summary>
         [HttpPost]
-        public async Task<ActionResult<Cita>> CreateCita(Cita cita)
+        public async Task<ActionResult<Cita>> CreateCita(CitaCreateDto citaDto)
         {
             try
             {
+                var cita = new Cita
+                {
+                    ContadorId = citaDto.ContadorId,
+                    ContribuyenteId = citaDto.ContribuyenteId,
+                    Fecha = citaDto.Fecha,
+                    Hora = citaDto.Hora,
+                    Estado = citaDto.Estado,
+                    Notas = citaDto.Notas,
+                    Contador = null!,
+                    Contribuyente = null!
+                };
+
                 var nuevaCita = await _citaService.CreateCitaAsync(cita);
                 return CreatedAtAction(nameof(GetCita), new { id = nuevaCita.Id }, nuevaCita);
             }
