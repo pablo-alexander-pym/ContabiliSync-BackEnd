@@ -17,7 +17,9 @@ builder.Services.AddScoped<IDocumentoService, DocumentoService>();
 
 // Configurar la base de datos
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+           .EnableSensitiveDataLogging() // Solo para desarrollo
+           .LogTo(Console.WriteLine, LogLevel.Information));
 
 // Configurar CORS
 builder.Services.AddCors(options =>
