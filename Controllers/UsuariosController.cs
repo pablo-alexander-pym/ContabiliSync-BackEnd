@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BackEnd.Models;
 using BackEnd.Services.Interfaces;
+using BackEnd.DTOs;
 
 namespace BackEnd.Controllers
 {
@@ -111,6 +112,61 @@ namespace BackEnd.Controllers
             catch (KeyNotFoundException)
             {
                 return NotFound();
+            }
+        }
+
+        /// <summary>
+        /// Autentica un usuario con email y contraseña
+        /// </summary>
+        [HttpPost("Login")]
+        public async Task<ActionResult<AuthResponseDto>> Login(LoginDto loginDto)
+        {
+            try
+            {
+                var usuario = await _usuarioService.AuthenticateAsync(loginDto.Email, loginDto.Password);
+
+                if (usuario == null)
+                {
+                    return Unauthorized(new { message = "Email o contraseña incorrectos" });
+                }
+
+                var response = new AuthResponseDto
+                {
+                    Id = usuario.Id,
+                    Nombre = usuario.Nombre,
+                    Email = usuario.Email,
+                    Tipo = usuario.Tipo.ToString(),
+                    Message = "Autenticación exitosa"
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error en la autenticación", error = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Cambia la contraseña de un usuario
+        /// </summary>
+        [HttpPost("{id}/CambiarPassword")]
+        public async Task<IActionResult> CambiarPassword(int id, ChangePasswordDto changePasswordDto)
+        {
+            try
+            {
+                var resultado = await _usuarioService.ChangePasswordAsync(id, changePasswordDto.CurrentPassword, changePasswordDto.NewPassword);
+
+                if (!resultado)
+                {
+                    return BadRequest(new { message = "Contraseña actual incorrecta o usuario no encontrado" });
+                }
+
+                return Ok(new { message = "Contraseña cambiada exitosamente" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error al cambiar la contraseña", error = ex.Message });
             }
         }
     }

@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<ICitaService, CitaService>();
 builder.Services.AddScoped<IDocumentoService, DocumentoService>();
+builder.Services.AddScoped<IPasswordService, PasswordService>();
 
 // Configurar la base de datos
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

@@ -12,5 +12,7 @@ namespace BackEnd.Services.Interfaces
         Task<IEnumerable<Usuario>> GetContadoresAsync();
         Task<IEnumerable<Usuario>> GetUsuariosByTipoAsync(TipoUsuario tipo);
         Task<bool> ExisteUsuarioAsync(int id);
+        Task<Usuario?> AuthenticateAsync(string email, string password);
+        Task<bool> ChangePasswordAsync(int id, string currentPassword, string newPassword);
     }
 }
