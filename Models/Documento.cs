@@ -66,27 +66,27 @@ namespace BackEnd.Models
     public enum TipoDocumento
     {
         /// <summary>
-        /// Certificado de ingresos y retenciones laborales expedido por el empleador.
+        /// 0 - Certificado de ingresos y retenciones laborales expedido por el empleador.
         /// </summary>
         CertificadoLaboral,
 
         /// <summary>
-        /// Certificado de ingresos financieros expedido por entidades bancarias.
+        /// 1 - Certificado de ingresos financieros expedido por entidades bancarias.
         /// </summary>
         CertificadoBancario,
 
         /// <summary>
-        /// Facturas de gastos deducibles para la declaración de renta.
+        /// 2 - Facturas de gastos deducibles para la declaración de renta.
         /// </summary>
         FacturasGastos,
 
         /// <summary>
-        /// Copia de la declaración de renta del año anterior.
+        /// 3 - Copia de la declaración de renta del año anterior.
         /// </summary>
         DeclaracionAnterior,
 
         /// <summary>
-        /// Cualquier otro tipo de documento relevante para el proceso tributario.
+        /// 4 - Cualquier otro tipo de documento relevante para el proceso tributario.
         /// </summary>
         Otro
     }
