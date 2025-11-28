@@ -148,6 +148,48 @@ namespace BackEnd.Controllers
         }
 
         /// <summary>
+        /// Registra un nuevo usuario en el sistema
+        /// </summary>
+        [HttpPost("Registro")]
+        public async Task<ActionResult<AuthResponseDto>> Registro(RegisterDto registerDto)
+        {
+            try
+            {
+                var nuevoUsuario = new Usuario
+                {
+                    Nombre = registerDto.Nombre,
+                    Email = registerDto.Email,
+                    Password = registerDto.Password,
+                    Telefono = registerDto.Telefono,
+                    Especialidad = registerDto.Especialidad,
+                    NumeroLicencia = registerDto.NumeroLicencia,
+                    Tipo = (TipoUsuario)registerDto.Tipo
+                };
+
+                var usuarioCreado = await _usuarioService.CreateUsuarioAsync(nuevoUsuario);
+
+                var response = new AuthResponseDto
+                {
+                    Id = usuarioCreado.Id,
+                    Nombre = usuarioCreado.Nombre,
+                    Email = usuarioCreado.Email,
+                    Tipo = usuarioCreado.Tipo.ToString(),
+                    Message = "Usuario registrado exitosamente"
+                };
+
+                return CreatedAtAction(nameof(GetUsuario), new { id = usuarioCreado.Id }, response);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error al registrar usuario", error = ex.Message });
+            }
+        }
+
+        /// <summary>
         /// Cambia la contraseña de un usuario
         /// </summary>
         [HttpPost("{id}/CambiarPassword")]

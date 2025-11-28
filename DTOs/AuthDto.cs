@@ -41,6 +41,52 @@ namespace BackEnd.DTOs
     }
 
     /// <summary>
+    /// DTO para registrar un nuevo usuario
+    /// </summary>
+    public class RegisterDto
+    {
+        /// <summary>
+        /// Nombre completo del usuario
+        /// </summary>
+        [Required]
+        public required string Nombre { get; set; }
+
+        /// <summary>
+        /// Email del usuario
+        /// </summary>
+        [Required]
+        [EmailAddress]
+        public required string Email { get; set; }
+
+        /// <summary>
+        /// Contraseña del usuario
+        /// </summary>
+        [Required]
+        [MinLength(6, ErrorMessage = "La contraseña debe tener al menos 6 caracteres")]
+        public required string Password { get; set; }
+
+        /// <summary>
+        /// Teléfono del usuario (opcional)
+        /// </summary>
+        public string? Telefono { get; set; }
+
+        /// <summary>
+        /// Especialidad del usuario (opcional, para contadores)
+        /// </summary>
+        public string? Especialidad { get; set; }
+
+        /// <summary>
+        /// Número de licencia (opcional, para contadores)
+        /// </summary>
+        public string? NumeroLicencia { get; set; }
+
+        /// <summary>
+        /// Tipo de usuario (por defecto Usuario)
+        /// </summary>
+        public int Tipo { get; set; } = 0; // Usuario por defecto
+    }
+
+    /// <summary>
     /// DTO para la respuesta de autenticación exitosa
     /// </summary>
     public class AuthResponseDto
